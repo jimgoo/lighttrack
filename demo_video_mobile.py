@@ -780,6 +780,8 @@ if __name__ == '__main__':
     args = parser.parse_args()
     args.bbox_thresh = 0.4
 
+    #args.video_path = '/home/jimmie/pbvids/first-15secs.mp4'
+
     # initialize pose estimator
     initialize_parameters()
     pose_estimator = Tester(Network(), cfg)
@@ -822,3 +824,20 @@ if __name__ == '__main__':
         print("Average FPS for framework only: {:.2f}fps".format(total_num_FRAMES / (total_time_ALL - total_time_DET - total_time_POSE)))
     else:
         print("Video does not exist.")
+
+"""
+OpenCV: FFMPEG: tag 0x44495658/'XVID' is not supported with codec id 12 and format 'mp4 / MP4 (MPEG-4 Part 14)'
+OpenCV: FFMPEG: fallback to use tag 0x7634706d/'mp4v'
+Finished video data/demo/videos/video_out.mp4
+total_time_ALL: 429.44s
+total_time_DET: 65.44s
+total_time_POSE: 81.16s
+total_time_LIGHTTRACK: 282.83s
+total_num_FRAMES: 1222
+total_num_PERSONS: 925
+
+Average FPS: 2.85fps
+Average FPS excluding Pose Estimation: 3.51fps
+Average FPS excluding Detection: 3.36fps
+Average FPS for framework only: 4.32fps
+"""
